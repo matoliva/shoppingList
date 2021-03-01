@@ -1,0 +1,14 @@
+.amount-input {
+    display: inline;
+    max-width: 100px;
+    margin: 0;
+    padding: 0.2em;
+    background-color: white;
+    border-radius: 0.6em;
+    color: #EC8071;
+}
+
+.amount-input__button {
+    border: none;
+    background: none;
+}

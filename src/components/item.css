@@ -1,0 +1,25 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid white;
+    padding: 0.4rem;
+    background-color: #EC8071;
+}   
+
+.item__desc {
+    display: flex;
+    align-items: baseline;
+    color: white;
+    font-weight: bold;
+}
+
+.item__desc__check {
+    margin-right: 1em;
+}
+
+.item__check--checked {
+    text-decoration: line-through;
+    color: black;
+}
