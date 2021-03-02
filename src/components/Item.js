@@ -1,18 +1,19 @@
 import { useState } from "react";
 import AmountInput from './AmountInput';
+import PropTypes from 'prop-types';
 
 import './item.css';
 
-const Item = (props) => {
-    const [checked, setChecked] = useState(props.isSelected | false);
+const Item = ({id, name, quantity = 0, isSelected = false, onSelectQuantity}) => {
+    const [checked, setChecked] = useState(isSelected);
 
     const handleClick = () => {
         setChecked(!checked);
     }
 
     const handleQuantity = (updatedItem) => {
-        const newState = { id: props.id, itemName: props.name, quantity: updatedItem };
-        props.onSelectQuantity(newState);
+        const newState = { id: id, itemName: name, quantity: updatedItem };
+        onSelectQuantity(newState);
     }
 
     return (
@@ -23,13 +24,21 @@ const Item = (props) => {
                     type="checkbox"
                     defaultChecked={checked}
                     onClick={ handleClick }></input>
-                <span className={ checked ? 'item__check--checked' : '' } >{props.name}</span>
+                <span className={ checked ? 'item__check--checked' : '' } >{name}</span>
             </div>
             <AmountInput 
-                quantity={props.quantity} 
+                quantity={quantity} 
                 onSelectQuantity={handleQuantity} />
         </div>
     )
 }
+
+Item.propTypes = {
+    id: PropTypes.number.isRequired, 
+    name: PropTypes.string.isRequired, 
+    quantity: PropTypes.number, 
+    isSelected: PropTypes.bool,
+    onSelectQuantity: PropTypes.func.isRequired
+};
 
 export default Item;

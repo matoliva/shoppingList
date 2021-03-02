@@ -1,32 +1,38 @@
 import { useState, useEffect } from "react";
 import { BsFillCaretLeftFill, BsFillCaretRightFill } from "react-icons/bs";
+import PropTypes from 'prop-types';
 
 import "./amountInput.css";
 
-const AmountInput = (props) => {
-    const [quantity, setQuantity] = useState(props.quantity | 0);
+const AmountInput = ({quantity = 0, onSelectQuantity}) => {
+    const [_quantity, setQuantity] = useState(quantity);
 
     const handleClickPlus = () => {
-        setQuantity(quantity + 1);
+        setQuantity(_quantity + 1);
     }
 
     const handleClickLess = () => {
-        if (quantity > 0) {
-            setQuantity(quantity - 1);
+        if (_quantity > 0) {
+            setQuantity(_quantity - 1);
         }
     }
 
     useEffect(() => {
-        props.onSelectQuantity(quantity);
-    }, [quantity]);
+        onSelectQuantity(_quantity);
+    }, [_quantity]);
 
     return (
         <div className="amount-input">
             <button className="amount-input__button" onClick={handleClickLess}> <BsFillCaretLeftFill />  </button>
-            <span> {props.quantity } </span>
+            <span> { quantity } </span>
             <button className="amount-input__button" onClick={handleClickPlus}> <BsFillCaretRightFill /> </button>
         </div>
     )
 }
+
+AmountInput.propTypes = {
+    quantity: PropTypes.number,
+    onSelectQuantity: PropTypes.func.isRequired
+};
 
 export default AmountInput;
