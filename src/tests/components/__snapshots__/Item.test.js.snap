@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Item /> should display <Item /> correctly 1`] = `
+<div
+  className="item"
+>
+  <div
+    className="item__desc"
+  >
+    <input
+      className="item__desc__check"
+      defaultChecked={false}
+      onClick={[Function]}
+      type="checkbox"
+    />
+    <span
+      className=""
+    >
+      test
+    </span>
+  </div>
+  <AmountInput
+    onSelectQuantity={[Function]}
+    quantity={10}
+  />
+</div>
+`;
