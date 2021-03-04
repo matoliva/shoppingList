@@ -47,11 +47,10 @@ describe('<Item />', () => {
 
         wrapper = shallow(<Item {...props} />);
 
-        const inputCheckbox = wrapper.find('input');
+        const inputCheckboxElem = wrapper.find('input');
 
-        inputCheckbox.simulate('click');
+        inputCheckboxElem.simulate('click');
         
-
         const spanElement = wrapper.find('span');
 
         expect(spanElement.hasClass('item__check--checked')).toBe(false);
