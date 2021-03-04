@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Item from './components/Item';
+import ListItems from './components/ListItems';
 
 import './App.css';
 
@@ -65,16 +65,10 @@ function App() {
           className="app__add__button" 
           onClick={handleAddButtonClick}> + </button>
       </div>
-      {items.map((item) => 
-        <Item
-          key={item.id}
-          id={item.id} 
-          onSelectQuantity={handleQuantity}
-          name={item.itemName}
-          quantity={item.quantity}
-          isSelected={item.isSelected} 
+      <ListItems
+        listItems={items} 
+        onSelectQuantity={handleQuantity}
         />
-      )}
       <div className="app__quantity">
         <span> Total: {totalQuantity} </span>
       </div>
