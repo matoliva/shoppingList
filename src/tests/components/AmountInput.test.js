@@ -11,10 +11,23 @@ describe('AmountInput Component', () => {
     let useEffect;
     let props;
 
+    const mockUseEffect = () => {
+        useEffect.mockImplementationOnce(f => f());
+    }
+
     beforeEach(() => {
-        useEffect = jest.spyOn(React, "useEffect").mockImplementation(f => f());
+        useEffect = jest.spyOn(React, "useEffect");
+
         props = { onSelectQuantity: jest.fn() };
+
+        mockUseEffect();
+        mockUseEffect();
+
         wrapper = shallow(<AmountInput onSelectQuantity={() => { }} />);
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     test('should display <AmountInput /> correctly', () => {
@@ -68,8 +81,18 @@ describe('AmountInput Component', () => {
         const btnAddElement = wrapper.find('#btn-add');
         btnAddElement.simulate('click');
 
-        expect(props.onSelectQuantity).toHaveBeenCalledTimes(2);
- 
+        expect(props.onSelectQuantity).toHaveBeenCalledTimes(1);
+
+    });
+
+    test('should call onSelectQuantity when the user click -1 button', () => {
+
+        wrapper = shallow(<AmountInput {...props} />);
+        const btnAddElement = wrapper.find('#btn-subtract');
+        btnAddElement.simulate('click');
+
+        expect(props.onSelectQuantity).toHaveBeenCalledTimes(1);
+
     });
 
 });
