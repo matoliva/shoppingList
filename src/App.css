@@ -25,30 +25,6 @@ body {
   font-weight: bold;
 }
 
-.app__add__input {
-  width: 80%;
-  border: none;
-  border-radius: 1em;
-  padding: 0.2em;
-  background-color: #FCCEC6;
-  color: #EC8071;
-  font-weight: bold;
-}
-
-.app__add__input::placeholder {
-  color: #EC8071;
-  
-}
-
-.app__add__button {
-  margin-left: -34px;
-  background-color: transparent;
-  border: none;
-  font-size: 2em;
-  color: #EC8071;
-  cursor: pointer;
-}
-
 @media (min-width: 768px) and (max-width: 1024px) {
   .app {
     max-width: 60%;

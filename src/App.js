@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ListItems from './components/ListItems';
+import AddItem from './components/AddItem';
 
 import './App.css';
 
@@ -11,10 +12,15 @@ function App() {
   ]);
 
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [inputValue, setInputValue] = useState('');
+
+  const handleNewItem = (newItem) => {
+    const item = {...newItem, id: items.length + 1}
+
+    setItems([...items, item]);
+  };
 
   const handleQuantity = (updatedItem) => {
-    const updatedItems = items.map( item => {
+    const updatedItems = items.map(item => {
       if (item.id === updatedItem.id) {
         item.quantity = updatedItem.quantity;
       }
@@ -26,49 +32,19 @@ function App() {
   };
 
   const totalCount = () => {
-    const total = items.reduce((acum, current) => acum += current.quantity , 0);
-    
+    const total = items.reduce((acum, current) => acum += current.quantity, 0);
+
     setTotalQuantity(total);
   }
 
-  const handleChange = (event) => {
-    if(event.key === 'Enter' ) {
-      handleAddButtonClick();
-    } else {
-      setInputValue(event.target.value);
-    }
-  };
-
-  const handleAddButtonClick = () => {
-    const newItem = {
-      id: items.length + 1,
-      itemName: inputValue,
-      quantity: 0,
-      isSelected: false
-    };
-
-    setItems([...items, newItem]);
-    setInputValue('');
-  };
-
   return (
     <div className="app">
-      <div className="app__add">
-        <input 
-          type="text" 
-          className="app__add__input" 
-          value={inputValue} 
-          onChange={handleChange}
-          onKeyPress={handleChange}
-          placeholder="  Add an item..."/>
-        <button 
-          className="app__add__button" 
-          onClick={handleAddButtonClick}> + </button>
-      </div>
+      <AddItem 
+        onAddNewItem={handleNewItem}/>
       <ListItems
-        listItems={items} 
+        listItems={items}
         onSelectQuantity={handleQuantity}
-        />
+      />
       <div className="app__quantity">
         <span> Total: {totalQuantity} </span>
       </div>
