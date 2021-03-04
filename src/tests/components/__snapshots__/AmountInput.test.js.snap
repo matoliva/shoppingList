@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AmountInput Component should display <AmountInput /> correctly 1`] = `
+<div
+  className="amount-input"
+>
+  <button
+    className="amount-input__button"
+    id="btn-subtract"
+    onClick={[Function]}
+  >
+     
+    <BsFillCaretLeftFill />
+      
+  </button>
+  <span>
+    0
+  </span>
+  <button
+    className="amount-input__button"
+    id="btn-add"
+    onClick={[Function]}
+  >
+     
+    <BsFillCaretRightFill />
+     
+  </button>
+</div>
+`;

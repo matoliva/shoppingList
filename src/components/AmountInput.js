@@ -23,9 +23,9 @@ const AmountInput = ({quantity = 0, onSelectQuantity}) => {
 
     return (
         <div className="amount-input">
-            <button className="amount-input__button" onClick={handleClickLess}> <BsFillCaretLeftFill />  </button>
-            <span> { quantity } </span>
-            <button className="amount-input__button" onClick={handleClickPlus}> <BsFillCaretRightFill /> </button>
+            <button id="btn-subtract" className="amount-input__button" onClick={handleClickLess}> <BsFillCaretLeftFill />  </button>
+            <span>{_quantity}</span>
+            <button id="btn-add" className="amount-input__button" onClick={handleClickPlus}> <BsFillCaretRightFill /> </button>
         </div>
     )
 }
